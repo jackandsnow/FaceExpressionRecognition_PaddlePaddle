@@ -52,7 +52,7 @@ def train_program(img, label):
         avg_cost -- 平均损失
         acc -- 分类的准确率
     """
-    prediction = convolutional_neural_network(img)  # 取消注释将使用 LeNet5卷积神经网络
+    prediction = convolutional_neural_network(img)  # 使用自定义的卷积神经网络
     # 使用类交叉熵函数计算predict和label之间的损失函数
     cost = fluid.layers.cross_entropy(input=prediction, label=label)
     # 计算平均损失
@@ -85,10 +85,16 @@ def train_test(test_program, feeder, test_data, batch_size):
 
 def predict(save_dirname='../model/cnn_paddle.model',
             image_file=r'M:\Users\jack\Desktop\C4\CK+DB\cohn-kanade-images\S005\001\S005_001_00000001.png'):
+    """
+    加载保存的模型进行预测
+    :param save_dirname: 模型保存的路径
+    :param image_file: 要预测的表情图片路径
+    :return:
+    """
     img_data = image_to_matrix(image_file)
     # 转为输入所需的大小
     img_data = img_data.reshape((1, 1, image_size, image_size)).astype(np.float32)
-    use_cuda = False  # 如想使用GPU，请设置为 True
+    use_cuda = True  # 如想使用GPU，请设置为 True
     place = fluid.CUDAPlace(0) if use_cuda else fluid.CPUPlace()
     # 创建执行器
     exe = fluid.Executor(place)
@@ -142,7 +148,7 @@ if __name__ == '__main__':
     # 一个minibatch中有64个数据
     batch_size = 52
     # 该模型运行在CPU上
-    use_cuda = False  # 如想使用GPU，请设置为 True
+    use_cuda = True  # 如想使用GPU，请设置为 True
     place = fluid.CUDAPlace(0) if use_cuda else fluid.CPUPlace()
     # 创建执行器
     exe = fluid.Executor(place)
