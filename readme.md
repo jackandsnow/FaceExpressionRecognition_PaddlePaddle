@@ -14,3 +14,7 @@ Lastly, I set up a convolutional neural network by paddle.fluid, which contains 
 
 4. How to run: Firstly you just run 'python codes.preprocessing.py' (remember to replace the `image_dir` and `label_dir` with yours).
 Then you can run 'python codes.main.py' to train the model and save the model. Finally you can load the model to predict your own face expressions.
+
+5. About accuracy: As you can see in the following picture, I just run 10 epochs and the best accuracy can reach to 100%.
+What's more, the model works well when doing prediction.
+![accuracy.png](https://github.com/jackandsnow/FaceExpressionRecognition_PaddlePaddle/raw/master/resources/accuracy.png)
