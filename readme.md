@@ -17,4 +17,5 @@ Then you can run 'python codes.main.py' to train the model and save the model. F
 
 5. About accuracy: As you can see in the following picture, I just run 10 epochs and the best accuracy can reach to 100%.
 What's more, the model works well when doing prediction.
+
 ![accuracy.png](https://github.com/jackandsnow/FaceExpressionRecognition_PaddlePaddle/raw/master/resources/accuracy.png)
